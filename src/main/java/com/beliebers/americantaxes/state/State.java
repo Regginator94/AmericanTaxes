@@ -45,4 +45,11 @@ public class State {
 	public void setTotalTax(double totalTax) {
 		this.totalTax = totalTax;
 	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
+	
+	
 }

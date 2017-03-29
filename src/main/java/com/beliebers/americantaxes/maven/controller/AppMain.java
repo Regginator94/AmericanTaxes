@@ -8,8 +8,11 @@ import com.beliebers.americantaxes.maven.product.model.Product;
 import com.beliebers.americantaxes.state.State;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -18,12 +21,15 @@ public class AppMain extends Application {
 	private static ArrayList<State> statesList = new ArrayList<State>();
 	private Stage primaryStage;
 	private AnchorPane rootLayout;
-	
+	private MainWindowController mainController =  new MainWindowController();
+	private ObservableList<State> observableStatesList;
+	private ObservableList<Product> observableProductsList;
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
         this.primaryStage.setTitle("AddressApp");
-
+        
+        
         initRootLayout();
 	}
 	
@@ -40,7 +46,11 @@ public class AppMain extends Application {
     		statesList.add(new State("Arizona", 0.056, 0.10725, 0.10725));
     		statesList.add(new State("Arkansas", 0.065, 0.11625, 0.11625));
     		statesList.add(new State("California", 0.0725, 0.0975, 0.0975));
-            // Load root layout from fxml file.
+    		observableStatesList = FXCollections.observableList(statesList);
+    		observableProductsList = FXCollections.observableList(productList);
+    		
+    		mainController.setMainApp(this);
+    		// Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(AppMain.class.getResource("MainWindow.fxml"));
             rootLayout = (AnchorPane) loader.load();
@@ -53,6 +63,18 @@ public class AppMain extends Application {
             e.printStackTrace();
         }
     }
+
+	public ObservableList<State> getObservableStatesList() {
+		return observableStatesList;
+	}
+
+
+
+	public ObservableList<Product> getObservableProductsList() {
+		return observableProductsList;
+	}
+
+
 
 	public static void main(String[] args) {
 		
