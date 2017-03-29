@@ -12,7 +12,9 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="150.0">
                <children>
-
+                  <ComboBox fx:id="category" layoutX="48.0" layoutY="51.0" prefWidth="150.0" />
+                  <ComboBox fx:id="state" layoutX="48.0" layoutY="124.0" prefWidth="150.0" />
+                  <ComboBox fx:id="product" layoutX="48.0" layoutY="192.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">

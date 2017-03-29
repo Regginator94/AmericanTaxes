@@ -43,6 +43,35 @@ public class AppMain extends Application {
     		productList.add(new Product("Kiełbasa", 14.90));
     		productList.add(new Product("Chleb", 2.70));
 
+    		State stateAlabama = new State("Alabama", 0.04);
+    		State stateAlaska = new State("Alaska", 0.0);
+    		State stateArizona = new State("Arizona", 0.056);
+    		State stateArkansas = new State("Arkansas", 0.065);
+    		State stateCalifornia = new State("California", 0.0725);
+    		
+    		statesList.add(stateAlabama);
+    		statesList.add(stateAlaska);
+    		statesList.add(stateArizona);
+    		statesList.add(stateArkansas);
+    		statesList.add(stateCalifornia);
+    		
+    		Category groceriesCategory= new Category("groceries");
+    		Category preparedFoodCategory = new Category("preparedFood");
+    		Category prescriptionDrugCategory = new Category("prescriptionDrug");
+    		Category nonPrescriptionDrugCategory = new Category("nonPrescriptionDrug");
+    		Category clothingCategory = new Category("clothing");
+    		Category intangiblesCategory = new Category("intangibles");
+    		
+    		categoriesList.add(groceriesCategory);
+    		categoriesList.add(preparedFoodCategory);
+    		categoriesList.add(prescriptionDrugCategory);
+    		categoriesList.add(nonPrescriptionDrugCategory);
+    		categoriesList.add(clothingCategory);
+    		categoriesList.add(intangiblesCategory);
+     		observableStatesList = FXCollections.observableList(statesList);		
+     		observableProductsList = FXCollections.observableList(productList);		
+     				
+     		mainController.setMainApp(this);
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(AppMain.class.getResource("MainWindow.fxml"));

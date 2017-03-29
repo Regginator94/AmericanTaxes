@@ -1,23 +1,19 @@
 package com.beliebers.americantaxes.maven.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.beliebers.americantaxes.maven.product.model.Product;
 import com.beliebers.americantaxes.state.State;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 
 public class MainWindowController {
 	@FXML 
-	private ChoiceBox<State> state = new ChoiceBox<State>();
+	private ComboBox<State> state = new ComboBox<State>();
 	@FXML 
-	private ChoiceBox<String> category;
+	private ComboBox<String> category;
 	@FXML 
-	private ChoiceBox<Product> product =  new ChoiceBox<Product>();
+	private ComboBox<Product> product =  new ComboBox<Product>();
 	ObservableList<State> observableStatesList;
 	ObservableList<Product> observableProductsList;
 	private AppMain mainApp;
