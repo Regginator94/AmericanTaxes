@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.beliebers.americantaxes.category.Category;
 import com.beliebers.americantaxes.maven.product.model.Product;
 import com.beliebers.americantaxes.state.State;
 
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
 public class AppMain extends Application {
 	private static List<Product> productList = new ArrayList<Product>();
 	private static ArrayList<State> statesList = new ArrayList<State>();
+	private static ArrayList<Category> categoriesList = new ArrayList<Category>();
 	private Stage primaryStage;
 	private AnchorPane rootLayout;
 	private MainWindowController mainController =  new MainWindowController();
@@ -41,16 +43,7 @@ public class AppMain extends Application {
     		productList.add(new Product("Kiełbasa", 14.90));
     		productList.add(new Product("Chleb", 2.70));
 
-    		statesList.add(new State("Alabama", 0.04, 0.135, 0.135));
-    		statesList.add(new State("Alaska", 0, 0.07, 0.07));
-    		statesList.add(new State("Arizona", 0.056, 0.10725, 0.10725));
-    		statesList.add(new State("Arkansas", 0.065, 0.11625, 0.11625));
-    		statesList.add(new State("California", 0.0725, 0.0975, 0.0975));
-    		observableStatesList = FXCollections.observableList(statesList);
-    		observableProductsList = FXCollections.observableList(productList);
-    		
-    		mainController.setMainApp(this);
-    		// Load root layout from fxml file.
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(AppMain.class.getResource("MainWindow.fxml"));
             rootLayout = (AnchorPane) loader.load();
