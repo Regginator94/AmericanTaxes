@@ -62,6 +62,12 @@ public class State {
 	public void setPrescriptionDrugTax(double prescriptionDrugTax) {
 		this.prescriptionDrugTax = prescriptionDrugTax;
 	}
+	
+	public void setPrescriptionDrugTax(String condition) {
+		//jesli cena wieksza niz 50
+		if (!condition.equals(""))
+			this.prescriptionDrugTax = prescriptionDrugTax;
+	}
 
 	public double getNonPrescriptionDrugTax() {
 		return nonPrescriptionDrugTax;

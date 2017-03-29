@@ -35,11 +35,17 @@ public class AppMain extends Application {
     		productList.add(new Product("Kiełbasa", 14.90));
     		productList.add(new Product("Chleb", 2.70));
 
-    		statesList.add(new State("Alabama", 0.04));
-    		statesList.add(new State("Alaska", 0.0));
-    		statesList.add(new State("Arizona", 0.056));
-    		statesList.add(new State("Arkansas", 0.065));
-    		statesList.add(new State("California", 0.0725));
+    		State stateAlabama = new State("Alabama", 0.04);
+    		State stateAlaska = new State("Alaska", 0.0);
+    		State stateArizona = new State("Arizona", 0.056);
+    		State stateArkansas = new State("Arkansas", 0.065);
+    		State stateCalifornia = new State("California", 0.0725);
+    		
+    		statesList.add(stateAlabama);
+    		statesList.add(stateAlaska);
+    		statesList.add(stateArizona);
+    		statesList.add(stateArkansas);
+    		statesList.add(stateCalifornia);
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(AppMain.class.getResource("MainWindow.fxml"));
