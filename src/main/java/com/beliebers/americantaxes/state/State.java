@@ -81,16 +81,6 @@ public class State {
 		return clothingTax;
 	}
 
-	public void setClothingTax(double clothingTax) {
-		this.clothingTax = clothingTax;
-	}
 
-	public double getIntangiblesTax() {
-		return intangiblesTax;
-	}
-
-	public void setIntangiblesTax(double intangiblesTax) {
-		this.intangiblesTax = intangiblesTax;
-	}
 	
 }

@@ -9,8 +9,11 @@ import com.beliebers.americantaxes.maven.product.model.Product;
 import com.beliebers.americantaxes.state.State;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -20,12 +23,15 @@ public class AppMain extends Application {
 	private static ArrayList<Category> categoriesList = new ArrayList<Category>();
 	private Stage primaryStage;
 	private AnchorPane rootLayout;
-	
+	private MainWindowController mainController =  new MainWindowController();
+	private ObservableList<State> observableStatesList;
+	private ObservableList<Product> observableProductsList;
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
         this.primaryStage.setTitle("AddressApp");
-
+        
+        
         initRootLayout();
 	}
 	
@@ -37,33 +43,7 @@ public class AppMain extends Application {
     		productList.add(new Product("Kiełbasa", 14.90));
     		productList.add(new Product("Chleb", 2.70));
 
-    		State stateAlabama = new State("Alabama", 0.04);
-    		State stateAlaska = new State("Alaska", 0.0);
-    		State stateArizona = new State("Arizona", 0.056);
-    		State stateArkansas = new State("Arkansas", 0.065);
-    		State stateCalifornia = new State("California", 0.0725);
-    		
-    		statesList.add(stateAlabama);
-    		statesList.add(stateAlaska);
-    		statesList.add(stateArizona);
-    		statesList.add(stateArkansas);
-    		statesList.add(stateCalifornia);
-    		
-    		Category groceriesCategory= new Category("groceries");
-    		Category preparedFoodCategory = new Category("preparedFood");
-    		Category prescriptionDrugCategory = new Category("prescriptionDrug");
-    		Category nonPrescriptionDrugCategory = new Category("nonPrescriptionDrug");
-    		Category clothingCategory = new Category("clothing");
-    		Category intangiblesCategory = new Category("intangibles");
-    		
-    		categoriesList.add(groceriesCategory);
-    		categoriesList.add(preparedFoodCategory);
-    		categoriesList.add(prescriptionDrugCategory);
-    		categoriesList.add(nonPrescriptionDrugCategory);
-    		categoriesList.add(clothingCategory);
-    		categoriesList.add(intangiblesCategory);
-    		
-            // Load root layout from fxml file.
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(AppMain.class.getResource("MainWindow.fxml"));
             rootLayout = (AnchorPane) loader.load();
@@ -76,6 +56,18 @@ public class AppMain extends Application {
             e.printStackTrace();
         }
     }
+
+	public ObservableList<State> getObservableStatesList() {
+		return observableStatesList;
+	}
+
+
+
+	public ObservableList<Product> getObservableProductsList() {
+		return observableProductsList;
+	}
+
+
 
 	public static void main(String[] args) {
 		
