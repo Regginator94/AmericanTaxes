@@ -12,21 +12,25 @@ import javafx.scene.control.ComboBox;
 
 public class MainWindowController {
 	@FXML 
-	private ComboBox<State> state = new ComboBox<State>();
+	private ComboBox<State> state = new ComboBox<State>();;
 	@FXML 
-	private ComboBox<Category> category;
+	private ComboBox<Category> category = new ComboBox<Category>();
 	@FXML 
-	private ComboBox<Product> product;
+	private ComboBox<Product> product = new ComboBox<Product>();;
 	
 	ObservableList<State> observableStatesList = null;
 	ObservableList<Product> observableProductsList = null;
 	private AppMain mainApp = null;
-	
+	@FXML
     public void setMainApp(AppMain mainApp) {
         this.mainApp = mainApp;
         // Add observable list data to the table
         observableStatesList = mainApp.getObservableStatesList();
         observableProductsList = mainApp.getObservableProductsList();
+        System.out.println(mainApp.getObservableStatesList());
+        System.out.println(state);
+        state.setItems(mainApp.getObservableStatesList());
+        //product.setItems(observableProductsList);
         
        ;
 	   // product.setItems(observableProductsList);
@@ -35,9 +39,7 @@ public class MainWindowController {
     }
 	@FXML
 	public void initialize() {
-		System.out.println("test");
-		state.setItems(observableStatesList);
-		System.out.println(observableProductsList);
+		state.getItems().add(new State("jasny",24));
 		category.getItems().add(new Category("rak"));
 	  // System.out.println(observableStatesList.get(0).toString());
 	}

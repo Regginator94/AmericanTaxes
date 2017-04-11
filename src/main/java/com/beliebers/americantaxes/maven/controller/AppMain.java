@@ -24,8 +24,8 @@ public class AppMain extends Application {
 	private Stage primaryStage;
 	private AnchorPane rootLayout;
 	private MainWindowController mainController = new MainWindowController();
-	private ObservableList<State> observableStatesList = FXCollections.observableList(statesList);;
-	private ObservableList<Product> observableProductsList = FXCollections.observableList(productList);
+	private ObservableList<State> observableStatesList;
+	private ObservableList<Product> observableProductsList;
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -47,7 +47,8 @@ public class AppMain extends Application {
      		statesList.add(new State("Arkansas", 0.065));
      		statesList.add(new State("California", 0.0725));
      		statesList.add(new State("California", 0.0725));
-    
+     		observableStatesList = FXCollections.observableList(statesList);
+     		observableProductsList = FXCollections.observableList(productList);
     		mainController.setMainApp(this);
         	FXMLLoader loader = new FXMLLoader();
             loader.setLocation(AppMain.class.getResource("MainWindow.fxml"));
