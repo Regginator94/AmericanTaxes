@@ -1,44 +1,47 @@
 package com.beliebers.americantaxes.maven.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import com.beliebers.americantaxes.category.Category;
 import com.beliebers.americantaxes.maven.product.model.Product;
 import com.beliebers.americantaxes.state.State;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 
 public class MainWindowController {
 	@FXML 
-	private ChoiceBox<State> state = new ChoiceBox<State>();
+	private ComboBox<State> state = new ComboBox<State>();
 	@FXML 
-	private ChoiceBox<String> category;
+	private ComboBox<Category> category;
 	@FXML 
-	private ChoiceBox<Product> product =  new ChoiceBox<Product>();
-	ObservableList<State> observableStatesList;
-	ObservableList<Product> observableProductsList;
-	private AppMain mainApp;
+	private ComboBox<Product> product;
+	
+	ObservableList<State> observableStatesList = null;
+	ObservableList<Product> observableProductsList = null;
+	private AppMain mainApp = null;
 	
     public void setMainApp(AppMain mainApp) {
         this.mainApp = mainApp;
-        System.out.println("test");
         // Add observable list data to the table
         observableStatesList = mainApp.getObservableStatesList();
-        state.setItems(observableStatesList);
         observableProductsList = mainApp.getObservableProductsList();
-        product.setItems(observableProductsList);
-        System.out.println(observableProductsList);
+        
+       ;
+	   // product.setItems(observableProductsList);
+       
+
     }
 	@FXML
 	public void initialize() {
 		System.out.println("test");
 		state.setItems(observableStatesList);
-	    product.setItems(observableProductsList);
-	    System.out.println(observableStatesList.get(0).toString());
+		System.out.println(observableProductsList);
+		category.getItems().add(new Category("rak"));
+	  // System.out.println(observableStatesList.get(0).toString());
 	}
+
 	
 
     

@@ -2,6 +2,11 @@ package com.beliebers.americantaxes.state;
 
 public class State {
 	
+	@Override
+	public String toString() {
+		return name;
+	}
+
 	private String name;
 	private double baseTax;
 	

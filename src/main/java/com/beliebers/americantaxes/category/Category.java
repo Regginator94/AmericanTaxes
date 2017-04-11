@@ -4,6 +4,11 @@ import java.util.Map;
 
 public class Category {
 	
+	@Override
+	public String toString() {
+		return name;
+	}
+
 	private String name;
 	private Map<Integer,Double> typeAndTax;
 	

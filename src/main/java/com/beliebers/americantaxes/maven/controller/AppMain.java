@@ -23,13 +23,13 @@ public class AppMain extends Application {
 	private static ArrayList<Category> categoriesList = new ArrayList<Category>();
 	private Stage primaryStage;
 	private AnchorPane rootLayout;
-	private MainWindowController mainController =  new MainWindowController();
-	private ObservableList<State> observableStatesList;
-	private ObservableList<Product> observableProductsList;
+	private MainWindowController mainController = new MainWindowController();
+	private ObservableList<State> observableStatesList = FXCollections.observableList(statesList);;
+	private ObservableList<Product> observableProductsList = FXCollections.observableList(productList);
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("AddressApp");
+        this.primaryStage.setTitle("American Taxes");
         
         
         initRootLayout();
@@ -37,19 +37,29 @@ public class AppMain extends Application {
 	
 	public void initRootLayout() {
         try {
+        	
         	productList.add(new Product("Gruszki", 4.5));
     		productList.add(new Product("Grzyby", 40));
     		productList.add(new Product("Pizza z kurczakiem", 12.40));
     		productList.add(new Product("Kiełbasa", 14.90));
     		productList.add(new Product("Chleb", 2.70));
-
-
-            FXMLLoader loader = new FXMLLoader();
+    		statesList.add(new State("Arizona", 0.4));
+     		statesList.add(new State("Arkansas", 0.065));
+     		statesList.add(new State("California", 0.0725));
+     		statesList.add(new State("California", 0.0725));
+    
+    		mainController.setMainApp(this);
+        	FXMLLoader loader = new FXMLLoader();
             loader.setLocation(AppMain.class.getResource("MainWindow.fxml"));
             rootLayout = (AnchorPane) loader.load();
+          
+           
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
+    
+            
+    		
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
