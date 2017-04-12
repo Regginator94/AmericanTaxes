@@ -37,16 +37,6 @@ public class AppMain extends Application {
 	
 	public void initRootLayout() {
         try {
-        	
-        	productList.add(new Product("Gruszki", 4.5));
-    		productList.add(new Product("Grzyby", 40));
-    		productList.add(new Product("Pizza z kurczakiem", 12.40));
-    		productList.add(new Product("Kiełbasa", 14.90));
-    		productList.add(new Product("Chleb", 2.70));
-    		statesList.add(new State("Arizona", 0.4));
-     		statesList.add(new State("Arkansas", 0.065));
-     		statesList.add(new State("California", 0.0725));
-     		statesList.add(new State("California", 0.0725));
      		observableStatesList = FXCollections.observableList(statesList);
      		observableProductsList = FXCollections.observableList(productList);
     		mainController.setMainApp(this);

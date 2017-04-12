@@ -27,20 +27,13 @@ public class MainWindowController {
         // Add observable list data to the table
         observableStatesList = mainApp.getObservableStatesList();
         observableProductsList = mainApp.getObservableProductsList();
-        System.out.println(mainApp.getObservableStatesList());
-        System.out.println(state);
-        state.setItems(mainApp.getObservableStatesList());
-        //product.setItems(observableProductsList);
-        
-       ;
-	   // product.setItems(observableProductsList);
-       
-
     }
+	
 	@FXML
 	public void initialize() {
-		state.getItems().add(new State("jasny",24));
-		category.getItems().add(new Category("rak"));
+		state.getItems().addAll(new State("Arizona", 0.4), new State("Arkansas", 0.065), new State("California", 0.0725), new State("California", 0.0725));
+		product.getItems().addAll(new Product("Gruszki", 4.5),new Product("Grzyby", 40),new Product("Pizza z kurczakiem", 12.40),new Product("Kiełbasa", 14.90),new Product("Chleb", 2.70));
+		category.getItems().addAll(new Category("Groceries"), new Category("Groceries"), new Category("Prepared Food"), new Category("Prescription drug"),  new Category("Non-prescription drug"),  new Category("Clothing"), new Category("Intangibles"));
 	  // System.out.println(observableStatesList.get(0).toString());
 	}
 
