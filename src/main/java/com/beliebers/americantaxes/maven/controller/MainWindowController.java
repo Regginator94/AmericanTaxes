@@ -8,6 +8,8 @@ import com.beliebers.americantaxes.category.Category;
 import com.beliebers.americantaxes.maven.product.model.Product;
 import com.beliebers.americantaxes.state.State;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -100,9 +102,40 @@ public class MainWindowController {
  		groceriesList.add(new Product("Mushrooms", 4.5));
  		groceriesList.add(new Product("Apples", 3.6));
  		categoriesList.get(0).setProductList(groceriesList);
+ 		List<Product> preparedFoodList = new ArrayList<Product>();
+ 		preparedFoodList.add(new Product("Pizza", 1.2));
+ 		preparedFoodList.add(new Product("Fies", 5.3));
+ 		categoriesList.get(1).setProductList(preparedFoodList);
+ 		List<Product> precriptionDrugList = new ArrayList<Product>();
+ 		precriptionDrugList.add(new Product("Marihuanen", 1.2));
+ 		precriptionDrugList.add(new Product("MDMA", 5.3));
+ 		categoriesList.get(2).setProductList(precriptionDrugList);
+ 		List<Product> nonPrecriptionDrugList = new ArrayList<Product>();
+ 		nonPrecriptionDrugList.add(new Product("LSD", 1.2));
+ 		nonPrecriptionDrugList.add(new Product("Aspiryna", 5.3));
+ 		categoriesList.get(3).setProductList(nonPrecriptionDrugList);
+ 		List<Product> clothingList = new ArrayList<Product>();
+ 		clothingList.add(new Product("T-shirt", 1.2));
+ 		clothingList.add(new Product("Slips", 5.3));
+ 		categoriesList.get(4).setProductList(clothingList);
+ 		List<Product> intangiblesList = new ArrayList<Product>();
+ 		intangiblesList.add(new Product("dunno", 1.2));
+ 		intangiblesList.add(new Product("dunno", 5.3));
+ 		categoriesList.get(5).setProductList(intangiblesList);
 		state.getItems().addAll(statesList);
 		product.getItems().addAll(productList);
 		category.getItems().addAll(categoriesList);
+		
+		category.valueProperty().addListener(new ChangeListener<Category>() {
+
+			public void changed(ObservableValue<? extends Category> observable, Category oldValue, Category newValue) {
+				Category cat = category.getValue();
+				ObservableList<Product> catObList = FXCollections.observableArrayList(cat.getProductList());
+				
+				product.setItems(catObList);
+				
+			}    
+	      });
 	
 	}
 
