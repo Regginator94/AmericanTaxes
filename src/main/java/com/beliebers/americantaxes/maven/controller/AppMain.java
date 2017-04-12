@@ -18,14 +18,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class AppMain extends Application {
-	private static List<Product> productList = new ArrayList<Product>();
-	private static ArrayList<State> statesList = new ArrayList<State>();
-	private static ArrayList<Category> categoriesList = new ArrayList<Category>();
+
 	private Stage primaryStage;
 	private AnchorPane rootLayout;
 	private MainWindowController mainController = new MainWindowController();
-	private ObservableList<State> observableStatesList;
-	private ObservableList<Product> observableProductsList;
+
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -37,18 +34,19 @@ public class AppMain extends Application {
 	
 	public void initRootLayout() {
         try {
-     		observableStatesList = FXCollections.observableList(statesList);
-     		observableProductsList = FXCollections.observableList(productList);
+     	
+     	
     		mainController.setMainApp(this);
         	FXMLLoader loader = new FXMLLoader();
             loader.setLocation(AppMain.class.getResource("MainWindow.fxml"));
             rootLayout = (AnchorPane) loader.load();
           
            
-
+           
+           mainController.setMainApp(this);
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
-    
+            
             
     		
             primaryStage.setScene(scene);
@@ -57,16 +55,6 @@ public class AppMain extends Application {
             e.printStackTrace();
         }
     }
-
-	public ObservableList<State> getObservableStatesList() {
-		return observableStatesList;
-	}
-
-
-
-	public ObservableList<Product> getObservableProductsList() {
-		return observableProductsList;
-	}
 
 
 
