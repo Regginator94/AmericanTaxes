@@ -100,6 +100,15 @@ public class MainWindowController {
  		groceriesList.add(new Product("Mushrooms", 4.5));
  		groceriesList.add(new Product("Apples", 3.6));
  		categoriesList.get(0).setProductList(groceriesList);
+ 		List<Product> preparedFoodList = new ArrayList<Product>();
+ 		preparedFoodList.add(new Product("Pizza", 1.2));
+ 		preparedFoodList.add(new Product("Fies", 5.3));
+ 		categoriesList.get(1).setProductList(preparedFoodList);
+ 		List<Product> precriptionDrugList = new ArrayList<Product>();
+ 		precriptionDrugList.add(new Product("Marihuanen", 1.2));
+ 		precriptionDrugList.add(new Product("MDMA", 5.3));
+ 		categoriesList.get(1).setProductList(precriptionDrugList);
+ 		
 		state.getItems().addAll(statesList);
 		product.getItems().addAll(productList);
 		category.getItems().addAll(categoriesList);
