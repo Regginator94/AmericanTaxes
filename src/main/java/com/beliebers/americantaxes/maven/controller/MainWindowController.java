@@ -18,7 +18,9 @@ import javafx.scene.text.Text;
 
 public class MainWindowController {
 	@FXML 
-	private ComboBox<State> state = new ComboBox<State>();;
+	private ComboBox<State> state = new ComboBox<State>();
+	@FXML 
+	private ComboBox<State> state2 = new ComboBox<State>();
 	@FXML 
 	private ComboBox<Category> category = new ComboBox<Category>();
 	@FXML 
@@ -246,6 +248,7 @@ public class MainWindowController {
  		intangiblesList.add(new Product("dunno", 5.3));
  		categoriesList.get(5).setProductList(intangiblesList);
 		state.getItems().addAll(statesList);
+		state2.getItems().addAll(statesList);
 		product.getItems().addAll(productList);
 		category.getItems().addAll(categoriesList);
 		
