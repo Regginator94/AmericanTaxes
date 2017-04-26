@@ -14,8 +14,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
 public class MainWindowController {
+	
+	@FXML 
+	private Label taxLabel = new Label();
+	@FXML 
+	private Label totalPriceLabel = new Label();
+	@FXML 
+	private Button obliczButton = new Button();
+	
 	@FXML 
 	private ComboBox<State> state = new ComboBox<State>();;
 	@FXML 
@@ -29,6 +38,10 @@ public class MainWindowController {
 	ObservableList<State> observableStatesList = null;
 	ObservableList<Product> observableProductsList = null;
 	private AppMain mainApp = null;
+	
+	String currentCategory = "";
+	String currentStateName = "";
+	
 	@FXML
     public void setMainApp(AppMain mainApp) {
         this.mainApp = mainApp;
@@ -251,12 +264,49 @@ public class MainWindowController {
 				ObservableList<Product> catObList = FXCollections.observableArrayList(cat.getProductList());
 				
 				product.setItems(catObList);
-				
+				currentCategory = newValue.getName();
+				System.out.println(currentCategory);
 			}    
 	      });
-	
-	}
+		
+		
+		state.valueProperty().addListener(new ChangeListener<State>() {
 
+			public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
+				State st = state.getValue();
+				
+				currentStateName = newValue.getName();
+				System.out.println(currentStateName);
+				State currentState = searchForStateByName(currentStateName);
+				double tax = 0.0d;
+				
+				if (currentCategory.equals("Groceries")) {
+					tax = currentState.getGroceriesTax();
+				} else if (currentCategory.equals("Prepared Food")) {
+					tax = currentState.getPreparedFoodTax();
+				} else if (currentCategory.equals("Prescription drug")) {
+					tax = currentState.getPrescriptionDrugTax();
+				} else if (currentCategory.equals("Non-prescription drug")) {
+					tax = currentState.getNonPrescriptionDrugTax();
+				} else if (currentCategory.equals("Clothing")) {
+					tax = currentState.getClothingTax();
+				} else if (currentCategory.equals("Intangibles")) {
+					tax = currentState.getIntangiblesTax();
+				} 
+				
+				taxLabel.setText(String.valueOf(tax));
+			}    
+	      });
+	}
+	
+	private State searchForStateByName(String stateName) {
+		for (State s : statesList) {
+			if (s.getName().equals(stateName)) {
+				return s;
+			}
+		}
+		return null;
+	}
 	
 
     
