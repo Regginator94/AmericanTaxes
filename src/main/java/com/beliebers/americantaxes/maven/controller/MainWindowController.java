@@ -14,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.text.Text;
 
 public class MainWindowController {
 	@FXML 
@@ -21,7 +22,11 @@ public class MainWindowController {
 	@FXML 
 	private ComboBox<Category> category = new ComboBox<Category>();
 	@FXML 
-	private ComboBox<Product> product = new ComboBox<Product>();;
+	private ComboBox<Product> product = new ComboBox<Product>();
+	@FXML
+	private Text price = new Text();
+	private Text tax = new Text();
+	private Text finalPrice = new Text();
 	private List<Product> productList = new ArrayList<Product>();
 	private static ArrayList<State> statesList = new ArrayList<State>();
 	private static ArrayList<Category> categoriesList = new ArrayList<Category>();
@@ -249,12 +254,28 @@ public class MainWindowController {
 			public void changed(ObservableValue<? extends Category> observable, Category oldValue, Category newValue) {
 				Category cat = category.getValue();
 				ObservableList<Product> catObList = FXCollections.observableArrayList(cat.getProductList());
-				
 				product.setItems(catObList);
 				
 			}    
 	      });
-	
+		
+		product.valueProperty().addListener(new ChangeListener<Product>() {
+
+			public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
+		
+			if(newValue == null) {
+				price.setText("");
+				tax.setText("");
+				finalPrice.setText("");
+			}
+			else
+				price.setText(String.valueOf(newValue.getPrice()));
+				tax.setText("");
+				finalPrice.setText("");
+			}    
+	      });
+		
+
 	}
 
 	
