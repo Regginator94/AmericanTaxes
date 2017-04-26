@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 public class MainWindowController {
 	
@@ -27,11 +28,17 @@ public class MainWindowController {
 	private Button obliczButton = new Button();
 	
 	@FXML 
-	private ComboBox<State> state = new ComboBox<State>();;
+	private ComboBox<State> state = new ComboBox<State>();
+	@FXML 
+	private ComboBox<State> state2 = new ComboBox<State>();
 	@FXML 
 	private ComboBox<Category> category = new ComboBox<Category>();
 	@FXML 
-	private ComboBox<Product> product = new ComboBox<Product>();;
+	private ComboBox<Product> product = new ComboBox<Product>();
+	@FXML
+	private Text price = new Text();
+	private Text tax = new Text();
+	private Text finalPrice = new Text();
 	private List<Product> productList = new ArrayList<Product>();
 	private static ArrayList<State> statesList = new ArrayList<State>();
 	private static ArrayList<Category> categoriesList = new ArrayList<Category>();
@@ -255,6 +262,7 @@ public class MainWindowController {
  		intangiblesList.add(new Product("dunno", 5.3));
  		categoriesList.get(5).setProductList(intangiblesList);
 		state.getItems().addAll(statesList);
+		state2.getItems().addAll(statesList);
 		product.getItems().addAll(productList);
 		category.getItems().addAll(categoriesList);
 		
@@ -263,7 +271,6 @@ public class MainWindowController {
 			public void changed(ObservableValue<? extends Category> observable, Category oldValue, Category newValue) {
 				Category cat = category.getValue();
 				ObservableList<Product> catObList = FXCollections.observableArrayList(cat.getProductList());
-				
 				product.setItems(catObList);
 				currentCategory = newValue.getName();
 				System.out.println(currentCategory);
@@ -298,6 +305,7 @@ public class MainWindowController {
 				taxLabel.setText(String.valueOf(tax));
 			}    
 	      });
+
 	}
 	
 	private State searchForStateByName(String stateName) {
@@ -307,6 +315,25 @@ public class MainWindowController {
 			}
 		}
 		return null;
+
+		
+		product.valueProperty().addListener(new ChangeListener<Product>() {
+
+			public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
+		
+			if(newValue == null) {
+				price.setText("");
+				tax.setText("");
+				finalPrice.setText("");
+			}
+			else
+				price.setText(String.valueOf(newValue.getPrice()));
+				tax.setText("");
+				finalPrice.setText("");
+			}    
+	      });
+		
+
 	}
 	
 
