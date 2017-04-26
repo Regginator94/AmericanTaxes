@@ -49,6 +49,10 @@ public class MainWindowController {
 	
 	String currentCategory = "";
 	String currentStateName = "";
+	String tax1 = "";
+	String tax2 = "";
+	String total1 = "";
+	String total2 = "";
 	
 	@FXML
     public void setMainApp(AppMain mainApp) {
@@ -302,26 +306,55 @@ public class MainWindowController {
 					tax = currentState.getIntangiblesTax();
 				} 
 				
-				taxLabel.setText(String.valueOf(tax));
+				tax1 = String.valueOf(tax);
+				taxLabel.setText(tax1 + " / " + tax2);
+				/*if (!price.getText().equals("")) {
+				double total = countTax(price.getText(), tax);
+				totalPriceLabel.setText(String.valueOf(total));
+				}*/
 			}    
 	      });
+		
+		state2.valueProperty().addListener(new ChangeListener<State>() {
 
-	}
-	
-	private State searchForStateByName(String stateName) {
-		for (State s : statesList) {
-			if (s.getName().equals(stateName)) {
-				return s;
-			}
-		}
-		return null;
+			private String currentState2Name;
 
+			public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
+				State st = state.getValue();
+				
+				currentState2Name = newValue.getName();
+				System.out.println(currentState2Name);
+				State currentState = searchForStateByName(currentState2Name);
+				double tax = 0.0d;
+				
+				if (currentCategory.equals("Groceries")) {
+					tax = currentState.getGroceriesTax();
+				} else if (currentCategory.equals("Prepared Food")) {
+					tax = currentState.getPreparedFoodTax();
+				} else if (currentCategory.equals("Prescription drug")) {
+					tax = currentState.getPrescriptionDrugTax();
+				} else if (currentCategory.equals("Non-prescription drug")) {
+					tax = currentState.getNonPrescriptionDrugTax();
+				} else if (currentCategory.equals("Clothing")) {
+					tax = currentState.getClothingTax();
+				} else if (currentCategory.equals("Intangibles")) {
+					tax = currentState.getIntangiblesTax();
+				} 
+				
+				tax2 = String.valueOf(tax);
+				taxLabel.setText(tax1 + " / " + tax2);
+				/*if (!price.getText().equals("")) {
+				double total = countTax(price.getText(), tax);
+				totalPriceLabel.setText(String.valueOf(total));
+				}*/
+			}    
+	      });
 		
 		product.valueProperty().addListener(new ChangeListener<Product>() {
 
 			public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
 		
-			if(newValue == null) {
+			if(newValue == null ) {
 				price.setText("");
 				tax.setText("");
 				finalPrice.setText("");
@@ -330,12 +363,27 @@ public class MainWindowController {
 				price.setText(String.valueOf(newValue.getPrice()));
 				tax.setText("");
 				finalPrice.setText("");
+				total1 = String.valueOf(countTax(price.getText(), Double.parseDouble(tax1)));
+				total2 = String.valueOf(countTax(price.getText(), Double.parseDouble(tax2)));
+				totalPriceLabel.setText(total1 + " / " + total2);
 			}    
 	      });
-		
+	}
 
+		
+	private State searchForStateByName(String stateName) {
+		for (State s : statesList) {
+			if (s.getName().equals(stateName)) {
+				return s;
+			}
+		}
+		return null;	
 	}
 	
-
+	private double countTax(String price, double tax) {
+		double priceAsNumber = Double.parseDouble(price);
+		double total = priceAsNumber + priceAsNumber * tax;
+		return total;
+	}
     
 }
