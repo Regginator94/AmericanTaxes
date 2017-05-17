@@ -23,8 +23,7 @@ public class MainWindowController {
 	
 	@FXML 
 	private Label taxLabel = new Label();
-	@FXML 
-	private Label totalPriceLabel = new Label();
+
 	@FXML 
 	private Button obliczButton = new Button();
 	@FXML 
@@ -43,8 +42,7 @@ public class MainWindowController {
 	private ComboBox<Category> category = new ComboBox<Category>();
 	@FXML 
 	private ComboBox<Product> product = new ComboBox<Product>();
-	@FXML
-	private Text price = new Text();
+
 	private Text tax = new Text();
 	private Text finalPrice = new Text();
 	private List<Product> productList = new ArrayList<Product>();
@@ -61,6 +59,7 @@ public class MainWindowController {
 	String tax2 = "";
 	String total1 = "";
 	String total2 = "";
+	double priceFromTotal = 0;
 	
 	@FXML
     public void setMainApp(AppMain mainApp) {
@@ -286,6 +285,8 @@ public class MainWindowController {
 				product.setItems(catObList);
 				currentCategory = newValue.getName();
 				System.out.println(currentCategory);
+				cenaField.setText("0");
+				cenaField2.setText("0");
 			}    
 	      });
 		
@@ -294,21 +295,29 @@ public class MainWindowController {
 			public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
 		
 			if(newValue == null) {
-				price.setText("");
+				cenaField3.setText("");
+				cenaField4.setText("");
+				cenaField.setText("");
+				//price.setText("");
 				tax.setText("");
 				finalPrice.setText("");
+
 			}
-			else
-				price.setText(String.valueOf(newValue.getPrice()));
-				tax.setText("");
-				finalPrice.setText("");
+			else {
+				cenaField3.setText("");
+				cenaField4.setText("");
+				cenaField.setText(String.valueOf(newValue.getPrice()));
+			}
+				//price.setText(String.valueOf(newValue.getPrice()));
+			tax.setText("");
+			finalPrice.setText("");
 			}    
 	      });
 		
 		
 		cenaField.textProperty().addListener((observable, oldValue, newValue) -> {
 			try {
-		        Float.parseFloat(newValue);
+		       // Float.parseFloat(newValue);
 		        cenaField.setText(newValue);
 		    } catch (NumberFormatException ex) {
 		    	cenaField.setText("0");
@@ -318,7 +327,8 @@ public class MainWindowController {
 		
 		cenaField2.textProperty().addListener((observable, oldValue, newValue) -> {
 			try {
-		        Float.parseFloat(newValue);
+		        //System.out.println(newValue);
+		        //Double.parseDouble(newValue.toString());
 		        cenaField2.setText(newValue);
 		    } catch (NumberFormatException ex) {
 		    	cenaField2.setText("0");
@@ -329,6 +339,10 @@ public class MainWindowController {
 			try {
 		        Float.parseFloat(newValue);
 		        cenaField3.setText(newValue);
+		      //  if (!cenaField.getText().equals(cenaField2.getText())) {
+			        priceFromTotal = Double.parseDouble(cenaField3.getText()) / (1+Double.parseDouble(tax1));
+			        cenaField.setText(String.format("%.2f", priceFromTotal));
+		        //}
 		    } catch (NumberFormatException ex) {
 		    	cenaField3.setText("0");
 		    }
@@ -338,6 +352,11 @@ public class MainWindowController {
 			try {
 		        Float.parseFloat(newValue);
 		        cenaField4.setText(newValue);
+		        //if (!cenaField.getText().equals(cenaField2.getText())) {
+			        priceFromTotal = Double.parseDouble(cenaField4.getText()) / (1+Double.parseDouble(tax1));
+			        cenaField2.setText(String.format("%.2f", priceFromTotal));
+		       // }
+
 		    } catch (NumberFormatException ex) {
 		    	cenaField4.setText("0");
 		    }
@@ -417,18 +436,31 @@ public class MainWindowController {
 			public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
 		
 			if(newValue == null ) {
-				price.setText("");
+				cenaField.setText("");
+				cenaField2.setText("");
+			//	price.setText("");
+				//String.valueOf(newValue.getPrice())
 				tax.setText("");
 				finalPrice.setText("");
 			}
-			else
-				price.setText(String.valueOf(newValue.getPrice()));
-				tax.setText("");
-				finalPrice.setText("");
-				total1 = String.valueOf(countTax(price.getText(), Double.parseDouble(tax1)));
-				total2 = String.valueOf(countTax(price.getText(), Double.parseDouble(tax2)));
-				totalPriceLabel.setText(total1 + " / " + total2);
-			}    
+				try {
+					cenaField.setText(String.valueOf(newValue.getPrice()));
+					cenaField2.setText(String.valueOf(newValue.getPrice()));
+					//price.setText(String.valueOf(newValue.getPrice()));
+					tax.setText("");
+					finalPrice.setText("");
+					
+					total1 = String.valueOf(countTax(cenaField.getText(), Double.parseDouble(tax1)));
+					total2 = String.valueOf(countTax(cenaField2.getText(), Double.parseDouble(tax2)));
+					//totalPriceLabel.setText(total1 + " / " + total2);
+					cenaField3.setText(total1);
+					cenaField4.setText(total2);
+				} catch (Exception e) {
+					System.out.println("Wszystko ok");
+				}
+
+		   
+			}
 	      });
 	}
 
