@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
@@ -8,40 +13,70 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.beliebers.americantaxes.maven.controller.MainWindowController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.beliebers.americantaxes.maven.controller.MainWindowController">
    <children>
-      <SplitPane dividerPositions="0.5" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: GREEN;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.5" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: GREEN;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="150.0">
                <children>
-<ComboBox id="category" fx:id="category" layoutX="52.0" layoutY="58.0" prefHeight="25.0" prefWidth="143.0" />
-                <ComboBox id="state" fx:id="state" layoutX="52.0" layoutY="110.0" prefHeight="25.0" prefWidth="143.0" />
-                <ComboBox id="product" fx:id="product" layoutX="52.0" layoutY="226.0" prefHeight="25.0" prefWidth="143.0" />
-                  <Label layoutX="38.0" layoutY="33.0" text="Kategoria" />
-                  <Label layoutX="38.0" layoutY="93.0" text="Stan" />
-                  <Label layoutX="41.0" layoutY="203.0" text="Produkt" />
-                  <Label layoutX="38.0" layoutY="149.0" text="Stan do porownania" />
-                  <ComboBox id="state" fx:id="state2" layoutX="52.0" layoutY="171.0" prefHeight="25.0" prefWidth="143.0" />
+<ComboBox id="category" fx:id="category" layoutX="92.0" layoutY="116.0" prefHeight="25.0" prefWidth="143.0" />
+                <ComboBox id="state" fx:id="state" layoutX="91.0" layoutY="204.0" prefHeight="25.0" prefWidth="143.0" />
+                <ComboBox id="product" fx:id="product" layoutX="91.0" layoutY="392.0" prefHeight="25.0" prefWidth="143.0" />
+                  <Label layoutX="117.0" layoutY="69.0" text="KATEGORIA" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label layoutX="140.0" layoutY="155.0" text="STAN" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label layoutX="123.0" layoutY="351.0" text="PRODUKT" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label layoutX="63.0" layoutY="249.0" prefHeight="27.0" prefWidth="200.0" text="STAN DO POROWNANIA" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <ComboBox id="state" fx:id="state2" layoutX="91.0" layoutY="297.0" prefHeight="25.0" prefWidth="143.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
 
-                  <Label fx:id="totalPriceLabel" layoutX="117.0" layoutY="254.0" text="0" />
+                  <Label fx:id="totalPriceLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="129.0" layoutY="445.0" prefHeight="27.0" prefWidth="106.0" text="0" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
 
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="196.0" prefHeight="17.0" prefWidth="130.0" style="-fx-background-color: WHITE;" text="Podatek" textAlignment="CENTER" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="237.0" prefHeight="17.0" prefWidth="130.0" style="-fx-background-color: WHITE;" text="Cena ostateczna" />
-                  <ImageView fitHeight="105.0" fitWidth="156.0" layoutX="46.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="115.0" layoutY="293.0" prefHeight="17.0" prefWidth="130.0" style="-fx-background-color: GREEN;" text="PODATEK" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="390.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: GREEN;" text="CENA OSTATECZNA" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <ImageView fitHeight="170.0" fitWidth="266.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@money_rect.jpg" />
                      </image></ImageView>
 
-                  <Label fx:id="taxLabel" layoutX="117.0" layoutY="213.0" text="0" />
+                  <Label fx:id="taxLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="133.0" layoutY="343.0" prefHeight="27.0" prefWidth="106.0" text="0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
 
-                  <Text fx:id="price" fill="WHITE" layoutX="44.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="152.13671875" />
+                  <Text fx:id="price" fill="WHITE" layoutX="104.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="152.13671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
                   <Text fx:id="tax" layoutX="109.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                   <Text fx:id="finalPrice" layoutX="109.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                  <Label layoutX="107.0" layoutY="141.0" style="-fx-background-color: white;" text="Cena" />
+                  <Label layoutX="160.0" layoutY="200.0" style="-fx-background-color: green;" text="CENA" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
 
                </children>
                
