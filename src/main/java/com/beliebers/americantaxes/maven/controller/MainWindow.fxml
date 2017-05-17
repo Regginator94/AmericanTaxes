@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
@@ -8,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.beliebers.americantaxes.maven.controller.MainWindowController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.beliebers.americantaxes.maven.controller.MainWindowController">
    <children>
       <SplitPane dividerPositions="0.5" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: GREEN;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -41,7 +46,10 @@
                   <Text fx:id="price" fill="WHITE" layoutX="44.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="152.13671875" />
                   <Text fx:id="tax" layoutX="109.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                   <Text fx:id="finalPrice" layoutX="109.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                  <Label layoutX="107.0" layoutY="141.0" style="-fx-background-color: white;" text="Cena" />
+                  <TextField fx:id="cenaField" layoutX="46.0" layoutY="137.0" prefHeight="25.0" prefWidth="66.0" />
+                  <TextField fx:id="cenaField2" layoutX="130.0" layoutY="137.0" prefHeight="25.0" prefWidth="66.0" />
+                  <TextField fx:id="cenaField3" layoutX="46.0" layoutY="272.0" prefHeight="25.0" prefWidth="66.0" />
+                  <TextField fx:id="cenaField4" layoutX="130.0" layoutY="272.0" prefHeight="25.0" prefWidth="66.0" />
 
                </children>
                
