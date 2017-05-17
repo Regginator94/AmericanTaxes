@@ -281,11 +281,27 @@ public class MainWindowController {
 			}    
 	      });
 		
+		product.valueProperty().addListener(new ChangeListener<Product>() {
+
+			public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
+		
+			if(newValue == null) {
+				price.setText("");
+				tax.setText("");
+				finalPrice.setText("");
+			}
+			else
+				price.setText(String.valueOf(newValue.getPrice()));
+				tax.setText("");
+				finalPrice.setText("");
+			}    
+	      });
+		
 		
 		state.valueProperty().addListener(new ChangeListener<State>() {
 
 			public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
-				State st = state.getValue();
+				//State st = state.getValue();
 				
 				currentStateName = newValue.getName();
 				System.out.println(currentStateName);
