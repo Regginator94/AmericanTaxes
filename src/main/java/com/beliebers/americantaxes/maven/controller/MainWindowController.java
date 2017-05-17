@@ -15,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
@@ -26,7 +27,14 @@ public class MainWindowController {
 	private Label totalPriceLabel = new Label();
 	@FXML 
 	private Button obliczButton = new Button();
-	
+	@FXML 
+	private TextField cenaField = new TextField();
+	@FXML 
+	private TextField cenaField2 = new TextField();
+	@FXML 
+	private TextField cenaField3 = new TextField();
+	@FXML 
+	private TextField cenaField4 = new TextField();
 	@FXML 
 	private ComboBox<State> state = new ComboBox<State>();
 	@FXML 
@@ -297,6 +305,44 @@ public class MainWindowController {
 			}    
 	      });
 		
+		
+		cenaField.textProperty().addListener((observable, oldValue, newValue) -> {
+			try {
+		        Float.parseFloat(newValue);
+		        cenaField.setText(newValue);
+		    } catch (NumberFormatException ex) {
+		    	cenaField.setText("0");
+		    }
+
+	      });
+		
+		cenaField2.textProperty().addListener((observable, oldValue, newValue) -> {
+			try {
+		        Float.parseFloat(newValue);
+		        cenaField2.setText(newValue);
+		    } catch (NumberFormatException ex) {
+		    	cenaField2.setText("0");
+		    }
+
+	      });
+		cenaField3.textProperty().addListener((observable, oldValue, newValue) -> {
+			try {
+		        Float.parseFloat(newValue);
+		        cenaField3.setText(newValue);
+		    } catch (NumberFormatException ex) {
+		    	cenaField3.setText("0");
+		    }
+
+	      });
+		cenaField4.textProperty().addListener((observable, oldValue, newValue) -> {
+			try {
+		        Float.parseFloat(newValue);
+		        cenaField4.setText(newValue);
+		    } catch (NumberFormatException ex) {
+		    	cenaField4.setText("0");
+		    }
+
+	      });
 		
 		state.valueProperty().addListener(new ChangeListener<State>() {
 
