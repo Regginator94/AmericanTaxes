@@ -286,7 +286,7 @@ public class MainWindowController {
 				ObservableList<Product> catObList = FXCollections.observableArrayList(cat.getProductList());
 				product.setItems(catObList);
 				currentCategory = newValue.getName();
-				System.out.println(currentCategory);
+				//System.out.println(currentCategory);
 				cenaField.setText("0");
 				cenaField2.setText("0");
 			}    
@@ -382,7 +382,7 @@ public class MainWindowController {
 				//State st = state.getValue();
 				
 				currentStateName = newValue.getName();
-				System.out.println(currentStateName);
+				//System.out.println(currentStateName);
 				State currentState = searchForStateByName(currentStateName);
 				double tax = 0.0d;
 				
@@ -421,7 +421,7 @@ public class MainWindowController {
 				State st = state.getValue();
 				
 				currentState2Name = newValue.getName();
-				System.out.println(currentState2Name);
+				//System.out.println(currentState2Name);
 				State currentState = searchForStateByName(currentState2Name);
 				double tax = 0.0d;
 				
@@ -476,7 +476,7 @@ public class MainWindowController {
 					cenaField3.setText(total1);
 					cenaField4.setText(total2);
 				} catch (Exception e) {
-					System.out.println("Wszystko ok");
+					//System.out.println("Wszystko ok");
 				}
 
 		   
