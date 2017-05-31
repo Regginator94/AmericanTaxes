@@ -323,6 +323,9 @@ public class MainWindowController {
 			try {
 		       // Float.parseFloat(newValue);
 		        cenaField.setText(newValue);
+				
+		        total1 = String.format(Locale.US, "%.2f", countTax(cenaField.getText(), Double.parseDouble(tax1)));
+				cenaField3.setText(total1);
 		    } catch (NumberFormatException ex) {
 		    	cenaField.setText("0");
 		    }
@@ -334,6 +337,8 @@ public class MainWindowController {
 		        //System.out.println(newValue);
 		        //Double.parseDouble(newValue.toString());
 		        cenaField2.setText(newValue);
+		        total2 = String.format(Locale.US, "%.2f", countTax(cenaField2.getText(), Double.parseDouble(tax2)));
+				cenaField4.setText(total2);
 		    } catch (NumberFormatException ex) {
 		    	cenaField2.setText("0");
 		    }
