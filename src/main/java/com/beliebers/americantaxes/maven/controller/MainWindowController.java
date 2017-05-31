@@ -396,9 +396,9 @@ public class MainWindowController {
 				} 
 				
 				tax1 = String.valueOf(tax);
-				taxLabel.setText(tax1 + " / " + tax2);
+				taxLabel.setText(tax1 + " vs " + tax2);
 				if (!cenaField.getText().equals("")) {
-					total1 = String.valueOf(countTax(cenaField.getText(), Double.parseDouble(tax1)));;
+					total1 = String.format(Locale.US, "%.2f", countTax(cenaField.getText(), Double.parseDouble(tax1)));
 					cenaField3.setText(total1);
 				}
 				/*if (!price.getText().equals("")) {
@@ -435,9 +435,9 @@ public class MainWindowController {
 				} 
 				
 				tax2 = String.valueOf(tax);
-				taxLabel.setText(tax1 + " / " + tax2);
+				taxLabel.setText(tax1 + " vs " + tax2);
 				if (!cenaField2.getText().equals("")) {
-					total2 = String.valueOf(countTax(cenaField2.getText(), Double.parseDouble(tax2)));;
+					total2 = String.format(Locale.US, "%.2f", countTax(cenaField2.getText(), Double.parseDouble(tax2)));
 					cenaField4.setText(total2);
 				}/*if (!price.getText().equals("")) {
 				double total = countTax(price.getText(), tax);
@@ -465,8 +465,8 @@ public class MainWindowController {
 					tax.setText("");
 					finalPrice.setText("");
 					
-					total1 = String.valueOf(countTax(cenaField.getText(), Double.parseDouble(tax1)));
-					total2 = String.valueOf(countTax(cenaField2.getText(), Double.parseDouble(tax2)));
+					total1 = String.format(Locale.US, "%.2f", countTax(cenaField.getText(), Double.parseDouble(tax1)));
+					total2 = String.format(Locale.US, "%.2f", countTax(cenaField2.getText(), Double.parseDouble(tax2)));
 					//totalPriceLabel.setText(total1 + " / " + total2);
 					cenaField3.setText(total1);
 					cenaField4.setText(total2);
