@@ -8,6 +8,6 @@ deploy:
   api_key: "GITHUB OAUTH TOKEN"
   file: "FILE TO UPLOAD"
   skip_cleanup: true
-  branches:
-  only: 
-    - master
+    on:  
+    tags: true
+    branch: master
