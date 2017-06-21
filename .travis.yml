@@ -20,7 +20,7 @@ deploy:
   api_key :
     secure: ${GH_Token}
   file_glob: true
-  file: "app.jar"
+  file: "maven-0.0.1-SNAPSHOT.jar"
   skip_cleanup: true
   on:  
     all_branches: true
