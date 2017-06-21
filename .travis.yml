@@ -9,7 +9,7 @@ branches:
     - /v\d+\.\d+[a-z]/
 
 before_deploy:
-  - export RELEASE_JAR_FILE=$(ls build/libs/*.jar)
+  - export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
   - echo "Deploying $RELEASE_JAR_FILE to GitHub"
 
 deploy:
@@ -17,7 +17,7 @@ deploy:
   api_key :
     secure: ${GH_Token}
   file_glob: true
-  file: "${RELEASE_JAR_FILE}"
+  file: "app.jar"
   skip_cleanup: true
   on:  
     all_branches: true
