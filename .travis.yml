@@ -17,6 +17,6 @@ deploy:
   file_glob: true
   file: "${RELEASE_JAR_FILE}"
   skip_cleanup: true
-    on:  
+  on:  
     tags: true
     all_branches: true
