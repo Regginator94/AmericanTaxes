@@ -9,13 +9,13 @@ branches:
     - /v\d+\.\d+[a-z]/
 
 before_deploy:
-  - export RELEASE_JAR_FILE=$(ls build/libs/*.jar)
+  - export RELEASE_JAR_FILE=$(build/libs/*.jar)
   - echo "Deploying $RELEASE_JAR_FILE to GitHub"
 
 deploy:
   provider: releases
   file_glob: true
-  file: "${RELEASE_JAR_FILE}"
+  file: "Plik wykonywalny"
   skip_cleanup: true
   on:  
     all_branches: true
