@@ -29,7 +29,7 @@ public class AppMain extends Application {
      	
     		mainController.setMainApp(this);
         	FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(this.getClass().getResource("MainWindow.fxml"));
+            loader.setLocation(this.getClass().getResource("/MainWindow.fxml"));
             rootLayout = (AnchorPane) loader.load();
           
            
