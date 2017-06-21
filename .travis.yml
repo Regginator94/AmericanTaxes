@@ -2,7 +2,8 @@ language: java
 jdk:
 - oraclejdk8
 install: mvn install
-
+api_key:
+    secure: 16bf43783ec91e042b37918d8654c6f6d23d25b0
 branches:
     only:
     - master
