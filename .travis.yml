@@ -2,3 +2,26 @@ language: java
 jdk:
 - oraclejdk8
 install: mvn install
+
+branches:
+    only:
+    - master
+    - /v\d+\.\d+[a-z]/
+
+script:
+    - mvn clean install
+
+before_deploy:
+  - export RELEASE_JAR_FILE=$(ls /home/travis/.m2/repository/com/beliebers/americantaxes/maven/0.0.1-SNAPSHOT/*.jar)
+  - export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
+  - echo "Deploying $RELEASE_JAR_FILE to GitHub"
+
+deploy:
+  provider: releases
+  api_key :
+    secure: ${GH_Token}
+  file_glob: true
+  file: "${RELEASE_JAR_FILE}"
+  skip_cleanup: true
+  on:  
+    all_branches: true
