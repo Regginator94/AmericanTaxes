@@ -9,7 +9,7 @@ branches:
     - /v\d+\.\d+[a-z]/
 
 before_deploy:
-  - export RELEASE_JAR_FILE=$(build/libs/*.jar)
+  - export RELEASE_JAR_FILE=$(ls build/libs/*.jar)
   - echo "Deploying $RELEASE_JAR_FILE to GitHub"
 
 deploy:
@@ -17,7 +17,7 @@ deploy:
   api_key :
     secure: ${GH_Token}
   file_glob: true
-  file: "Plik wykonywalny"
+  file: "${RELEASE_JAR_FILE}"
   skip_cleanup: true
   on:  
     all_branches: true
