@@ -14,7 +14,8 @@ before_deploy:
 
 deploy:
   provider: releases
-  api_key :${GH_Token}
+  api_key :
+    secure: ${GH_Token}
   file_glob: true
   file: "Plik wykonywalny"
   skip_cleanup: true
